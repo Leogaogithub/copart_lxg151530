@@ -17,9 +17,7 @@ public class DataWriter {
 			BufferedWriter bw = new BufferedWriter(fw);
 			bw.write(lines);
 			bw.close();
-
-			System.out.println("Done");
-
+			//System.out.println("Done");
 		} catch (IOException e) {
 			e.printStackTrace();
 		}

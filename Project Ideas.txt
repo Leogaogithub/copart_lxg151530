@@ -1,0 +1,16 @@
+1. NFC based service:
+a. 
+1) we could apply listener-observer pattern to develop this project.
+2) we put List<Listener> in Server. when some events occur, then the server loops List<Listener> to send app push message. 
+3) user could subscribe this NFC seveice, then user has one interface that could register.
+NFC based service. Once they register, his/her account is put into List<Listener> in Server.
+
+2. Event/messaging queues.
+
+
+3. Alexa, Deploy my code to Dev1
+a
+1) we could apply command pattern to develop this project. there is a interface called Command. All other Command inherit this interface.
+2) first we need an  API that can tranfer voice to text.
+3) second parse all key words which are instructions or parameter that DevOps could understand.
+4) third we can map instructions to command.

@@ -6,7 +6,7 @@ public class PieceOfCake {
 		String inputfile = "./PieceOfCakeInput.txt";
 		String outputfile = "./PieceOfCakeOutput.txt";
 		List<String> lines = DataReader.readLines(inputfile);
-		System.out.println("input filename is : ./DNASequencingInput.txt");
+		System.out.println("input filename is : "+inputfile);
 		System.out.println("input string is : " );
 		for(String line : lines){
 			System.out.println(line);
