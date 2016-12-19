@@ -10,14 +10,13 @@ interface ClosestCopartRule{
 
 class ClosestCopartRuleBasedOnDB implements ClosestCopartRule{
 	public String getClosestCopartFacility(String id, String zipcode){		
-		//
-		return null;
+		return "Vallejo,CA";
 	}	
 }
 
 class ClosestCopartRuleBasedOnEngine implements ClosestCopartRule{
 	public String getClosestCopartFacility(String id, String zipcode){		
-		return null;
+		return "Martinez,CA";
 	}	
 }
 
@@ -53,11 +52,11 @@ class CusterFromDBAPI{
 		System.out.println("database is : ./MostAppropriateFacilityDB.txt");
 		for(String line : lines){
 			String fields[] = line.split(",");
-			Customer customer = new Customer(fields[0], fields[1]);
+			Customer customer = new Customer(fields[1], fields[0]);
 			ClosestCopartRule rule = null;
-			if(fields[1].equals("ClosestCopartRuleBasedOnDB")){
+			if(fields[2].equals("ClosestCopartRuleBasedOnDB")){
 				rule = new ClosestCopartRuleBasedOnDB();
-			}else if(fields[1].equals("ClosestCopartRuleBasedOnEngine")){
+			}else if(fields[2].equals("ClosestCopartRuleBasedOnEngine")){
 				rule = new ClosestCopartRuleBasedOnEngine();
 			}else{
 				rule = new ClosestCopartRuleBasedOnDB();
@@ -79,7 +78,16 @@ public class MostAppropriateFacility {
 		return customer.rule.getClosestCopartFacility(id, zipcode);
 	}
 	
-	public static void main(String[] args) {		
-		
+	public static void main(String[] args) {	
+		String inputfile = "./MostAppropriateFacilityInput.txt";
+		String outputfile = "./MostAppropriateFacilityOutput.txt";
+		List<String> lines = DataReader.readLines(inputfile);
+		System.out.println("input filename is : "+inputfile);
+		System.out.println("input string is : " );
+		for(String line : lines){
+			String fields[] = line.split(",");		
+			String result = getClosestCopartFacility(fields[1], fields[0]);
+			System.out.println("For customer "+fields[0]+" with a provided zip code of " + fields[1] + ", closest Corpart Facility is " + result);
+		}	
 	}
 }
